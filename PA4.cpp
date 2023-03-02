@@ -17,6 +17,7 @@ int numPackages(ifstream& inFile)
   return count;
 }
 Package * loadPackages(ifstream& inFile, string * driverName, int * numPackages) {
+	return NULL;
 	Package * output = new Package[*numPackages];
 	int id1;
 	double weight1;
