@@ -3,20 +3,20 @@
 // TODO: finish the functions and define/call additional functions
 int numPackages(ifstream& inFile)
 {
+	
 	int count = 0;
 	 string num = " ";
+	 string temp;
   while (!inFile.eof()) {
-    for(int i = 0; i < 6; i++)
-	{
 		getline(inFile,num);
-	}
     if (!inFile.bad()) {
       count++;
     }
   }
-  return count;
+  return count/6;
 }
 Package * loadPackages(ifstream& inFile, string * driverName, int * numPackages) {
+	
 	Package * output = new Package[*numPackages];
 	string temp;
 	int id1;
