@@ -18,6 +18,7 @@ int numPackages(ifstream& inFile)
 }
 Package * loadPackages(ifstream& inFile, string * driverName, int * numPackages) {
 	Package * output = new Package[*numPackages];
+	string temp;
 	int id1;
 	double weight1;
 	int width1;
@@ -25,7 +26,7 @@ Package * loadPackages(ifstream& inFile, string * driverName, int * numPackages)
 	int height1;
 	for(int i =0; i < *numPackages; i++)
 	{
-		
+		getline(inFile,temp);
 		Package temp; 
 		inFile >> id1;
 		inFile >> weight1;
