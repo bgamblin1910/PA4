@@ -6,39 +6,30 @@ int numPackages(ifstream& inFile)
 	
 	int count = 0;
 	 string num = " ";
-	 string temp;
   while (!inFile.eof()) {
 		getline(inFile,num);
     if (!inFile.bad()) {
       count++;
     }
+
   }
-  return count/6;
+  
+  return (count/6);
 }
 Package * loadPackages(ifstream& inFile, string * driverName, int * numPackages) {
-	
+	inFile.clear();
+	inFile.seekg(0, ios::beg);
 	Package * output = new Package[*numPackages];
-	string temp;
-	int id1;
-	double weight1;
-	int width1;
-	int length1;
-	int height1;
+	getline(inFile,*driverName);
 	for(int i =0; i < *numPackages; i++)
 	{
-		getline(inFile,temp);
+		inFile.seekg(1, ios::cur);
 		Package temp; 
-		inFile >> id1;
-		inFile >> weight1;
-		inFile >> width1;
-		inFile >> length1;
-		inFile >> height1;
-		temp.id = id1;
-		temp.weight = weight1;
-		temp.width = width1;
-		temp.length = length1;
-		temp.height = height1;
-		
+		inFile >> temp.id ;
+		inFile >> temp.weight;
+		inFile >> temp.width;
+		inFile >> temp.length;
+		inFile >> temp.height;
 		output[i] = temp;
 	}
 	
@@ -47,7 +38,7 @@ Package * loadPackages(ifstream& inFile, string * driverName, int * numPackages)
 
 
 
-void computePackageStats(const Package packages[], const int numPackages, int * heaviestId, double * heaviestWeight, double * avgWeight) {
+void computePackageStats(const Package  packages[], const int numPackages, int * heaviestId, double * heaviestWeight, double * avgWeight) {
 	
 	int id = 0;
 	double weightHeavy = 0;
