@@ -1,7 +1,7 @@
 #include "PA4.h"
 
 // TODO: finish the functions and define/call additional functions
-int numPackages(ifstream& inFile)
+int numOfPackages(ifstream& inFile)
 {
 	
 	int count = 0;
@@ -17,6 +17,7 @@ int numPackages(ifstream& inFile)
   return (count/6);
 }
 Package * loadPackages(ifstream& inFile, string * driverName, int * numPackages) {
+	*numPackages = numOfPackages(inFile);
 	inFile.clear();
 	inFile.seekg(0, ios::beg);
 	Package * output = new Package[*numPackages];
